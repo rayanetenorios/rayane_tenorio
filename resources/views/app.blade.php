@@ -6,7 +6,17 @@
         <meta name="theme-color" content="#3F1749">
         <meta name="apple-mobile-web-app-status-bar-style" content="#3F1749">
         <meta name="msapplication-navbutton-color" content="#3F1749">
+        
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-78ZBJE12E3"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
+        gtag('config', 'G-78ZBJE12E3');
+        </script>
+        
         <title inertia>Rayane Tenório Dev</title>
 
         <!-- Fonts -->
