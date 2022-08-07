@@ -1,188 +1,185 @@
 <script setup>
 import { Head, Link } from '@inertiajs/inertia-vue3';
+import SiteLayout from '@/Layouts/Site.vue';
+import PhpLogo from '@/Components/Icons/PhpLogo.vue';
+import ChapeuFormatura from '@/Components/Icons/ChapeuFormatura.vue';
+import Casa from '@/Components/Icons/Casa.vue';
 
-defineProps({
-    canLogin: Boolean,
-    canRegister: Boolean,
-    laravelVersion: String,
-    phpVersion: String,
-})
 </script>
 
 <template>
-    <Head title="Welcome" />
-
-    <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
-        <div v-if="canLogin" class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-            <Link v-if="$page.props.auth.user" :href="route('dashboard')" class="text-sm text-gray-700 underline">
-                Dashboard
-            </Link>
-
-            <template v-else>
-                <Link :href="route('login')" class="text-sm text-gray-700 underline">
-                    Log in
-                </Link>
-
-                <Link v-if="canRegister" :href="route('register')" class="ml-4 text-sm text-gray-700 underline">
-                    Register
-                </Link>
-            </template>
-        </div>
-
-        <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-            <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
-                <svg viewBox="0 0 651 192" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-16 w-auto text-gray-700 sm:h-20">
-                    <g clip-path="url(#clip0)" fill="#EF3B2D">
-                        <path d="M248.032 44.676h-16.466v100.23h47.394v-14.748h-30.928V44.676zM337.091 87.202c-2.101-3.341-5.083-5.965-8.949-7.875-3.865-1.909-7.756-2.864-11.669-2.864-5.062 0-9.69.931-13.89 2.792-4.201 1.861-7.804 4.417-10.811 7.661-3.007 3.246-5.347 6.993-7.016 11.239-1.672 4.249-2.506 8.713-2.506 13.389 0 4.774.834 9.26 2.506 13.459 1.669 4.202 4.009 7.925 7.016 11.169 3.007 3.246 6.609 5.799 10.811 7.66 4.199 1.861 8.828 2.792 13.89 2.792 3.913 0 7.804-.955 11.669-2.863 3.866-1.908 6.849-4.533 8.949-7.875v9.021h15.607V78.182h-15.607v9.02zm-1.431 32.503c-.955 2.578-2.291 4.821-4.009 6.73-1.719 1.91-3.795 3.437-6.229 4.582-2.435 1.146-5.133 1.718-8.091 1.718-2.96 0-5.633-.572-8.019-1.718-2.387-1.146-4.438-2.672-6.156-4.582-1.719-1.909-3.032-4.152-3.938-6.73-.909-2.577-1.36-5.298-1.36-8.161 0-2.864.451-5.585 1.36-8.162.905-2.577 2.219-4.819 3.938-6.729 1.718-1.908 3.77-3.437 6.156-4.582 2.386-1.146 5.059-1.718 8.019-1.718 2.958 0 5.656.572 8.091 1.718 2.434 1.146 4.51 2.674 6.229 4.582 1.718 1.91 3.054 4.152 4.009 6.729.953 2.577 1.432 5.298 1.432 8.162-.001 2.863-.479 5.584-1.432 8.161zM463.954 87.202c-2.101-3.341-5.083-5.965-8.949-7.875-3.865-1.909-7.756-2.864-11.669-2.864-5.062 0-9.69.931-13.89 2.792-4.201 1.861-7.804 4.417-10.811 7.661-3.007 3.246-5.347 6.993-7.016 11.239-1.672 4.249-2.506 8.713-2.506 13.389 0 4.774.834 9.26 2.506 13.459 1.669 4.202 4.009 7.925 7.016 11.169 3.007 3.246 6.609 5.799 10.811 7.66 4.199 1.861 8.828 2.792 13.89 2.792 3.913 0 7.804-.955 11.669-2.863 3.866-1.908 6.849-4.533 8.949-7.875v9.021h15.607V78.182h-15.607v9.02zm-1.432 32.503c-.955 2.578-2.291 4.821-4.009 6.73-1.719 1.91-3.795 3.437-6.229 4.582-2.435 1.146-5.133 1.718-8.091 1.718-2.96 0-5.633-.572-8.019-1.718-2.387-1.146-4.438-2.672-6.156-4.582-1.719-1.909-3.032-4.152-3.938-6.73-.909-2.577-1.36-5.298-1.36-8.161 0-2.864.451-5.585 1.36-8.162.905-2.577 2.219-4.819 3.938-6.729 1.718-1.908 3.77-3.437 6.156-4.582 2.386-1.146 5.059-1.718 8.019-1.718 2.958 0 5.656.572 8.091 1.718 2.434 1.146 4.51 2.674 6.229 4.582 1.718 1.91 3.054 4.152 4.009 6.729.953 2.577 1.432 5.298 1.432 8.162 0 2.863-.479 5.584-1.432 8.161zM650.772 44.676h-15.606v100.23h15.606V44.676zM365.013 144.906h15.607V93.538h26.776V78.182h-42.383v66.724zM542.133 78.182l-19.616 51.096-19.616-51.096h-15.808l25.617 66.724h19.614l25.617-66.724h-15.808zM591.98 76.466c-19.112 0-34.239 15.706-34.239 35.079 0 21.416 14.641 35.079 36.239 35.079 12.088 0 19.806-4.622 29.234-14.688l-10.544-8.158c-.006.008-7.958 10.449-19.832 10.449-13.802 0-19.612-11.127-19.612-16.884h51.777c2.72-22.043-11.772-40.877-33.023-40.877zm-18.713 29.28c.12-1.284 1.917-16.884 18.589-16.884 16.671 0 18.697 15.598 18.813 16.884h-37.402zM184.068 43.892c-.024-.088-.073-.165-.104-.25-.058-.157-.108-.316-.191-.46-.056-.097-.137-.176-.203-.265-.087-.117-.161-.242-.265-.345-.085-.086-.194-.148-.29-.223-.109-.085-.206-.182-.327-.252l-.002-.001-.002-.002-35.648-20.524a2.971 2.971 0 00-2.964 0l-35.647 20.522-.002.002-.002.001c-.121.07-.219.167-.327.252-.096.075-.205.138-.29.223-.103.103-.178.228-.265.345-.066.089-.147.169-.203.265-.083.144-.133.304-.191.46-.031.085-.08.162-.104.25-.067.249-.103.51-.103.776v38.979l-29.706 17.103V24.493a3 3 0 00-.103-.776c-.024-.088-.073-.165-.104-.25-.058-.157-.108-.316-.191-.46-.056-.097-.137-.176-.203-.265-.087-.117-.161-.242-.265-.345-.085-.086-.194-.148-.29-.223-.109-.085-.206-.182-.327-.252l-.002-.001-.002-.002L40.098 1.396a2.971 2.971 0 00-2.964 0L1.487 21.919l-.002.002-.002.001c-.121.07-.219.167-.327.252-.096.075-.205.138-.29.223-.103.103-.178.228-.265.345-.066.089-.147.169-.203.265-.083.144-.133.304-.191.46-.031.085-.08.162-.104.25-.067.249-.103.51-.103.776v122.09c0 1.063.568 2.044 1.489 2.575l71.293 41.045c.156.089.324.143.49.202.078.028.15.074.23.095a2.98 2.98 0 001.524 0c.069-.018.132-.059.2-.083.176-.061.354-.119.519-.214l71.293-41.045a2.971 2.971 0 001.489-2.575v-38.979l34.158-19.666a2.971 2.971 0 001.489-2.575V44.666a3.075 3.075 0 00-.106-.774zM74.255 143.167l-29.648-16.779 31.136-17.926.001-.001 34.164-19.669 29.674 17.084-21.772 12.428-43.555 24.863zm68.329-76.259v33.841l-12.475-7.182-17.231-9.92V49.806l12.475 7.182 17.231 9.92zm2.97-39.335l29.693 17.095-29.693 17.095-29.693-17.095 29.693-17.095zM54.06 114.089l-12.475 7.182V46.733l17.231-9.92 12.475-7.182v74.537l-17.231 9.921zM38.614 7.398l29.693 17.095-29.693 17.095L8.921 24.493 38.614 7.398zM5.938 29.632l12.475 7.182 17.231 9.92v79.676l.001.005-.001.006c0 .114.032.221.045.333.017.146.021.294.059.434l.002.007c.032.117.094.222.14.334.051.124.088.255.156.371a.036.036 0 00.004.009c.061.105.149.191.222.288.081.105.149.22.244.314l.008.01c.084.083.19.142.284.215.106.083.202.178.32.247l.013.005.011.008 34.139 19.321v34.175L5.939 144.867V29.632h-.001zm136.646 115.235l-65.352 37.625V148.31l48.399-27.628 16.953-9.677v33.862zm35.646-61.22l-29.706 17.102V66.908l17.231-9.92 12.475-7.182v33.841z"/>
-                    </g>
-                </svg>
-            </div>
-
-            <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-                <div class="grid grid-cols-1 md:grid-cols-2">
-                    <div class="p-6">
-                        <div class="flex items-center">
-                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-                            <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laravel.com/docs" class="underline text-gray-900 dark:text-white">Documentation</a></div>
-                        </div>
-
-                        <div class="ml-12">
-                            <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                Laravel has wonderful, thorough documentation covering every aspect of the framework. Whether you are new to the framework or have previous experience with Laravel, we recommend reading all of the documentation from beginning to end.
-                            </div>
+    <SiteLayout>
+        <Head title="Home" />
+        <main class="h-full max-w-screen-lg md:flex mx-auto scrollbar overflow-y-auto">
+            <div class="md:w-1/3 p-2 md:flex md:justify-center">
+                <div class="md:fixed">
+                    <div class="md:block flex justify-center items-center">
+                        <img class="shadow-xl md:h-60 md:w-60 h-40 w-40 rounded-full" src="https://avatars.githubusercontent.com/u/82675049?v=4" alt="">
+                        <div class="mb-2 mx-7 mt-4 justify-center items-center">
+                            <h1 class="md:text-3xl text-2xl text-gray-800 font-bold dark:text-blue-100">Rayane Tenório</h1>
+                            <div class="md:text-lg text-gray-600 dark:text-blue-100">Desenvolvedora full-stack</div>
                         </div>
                     </div>
-
-                    <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
-                        <div class="flex items-center">
-                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                            <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laracasts.com" class="underline text-gray-900 dark:text-white">Laracasts</a></div>
+                    <div class="mx-7 hidden md:block">
+                        <div class="infos my-2 text-gray-600 flex dark:text-blue-100">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" width="24" height="24" stroke="currentColor" class="mr-1"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                                contato@rayanetenorio.com</div>
+                        <div class="infos my-2 text-gray-600 flex dark:text-blue-100">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" width="24" height="24" stroke="currentColor" class="mr-1"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> 
+                            Maceió/AL, BR
                         </div>
-
-                        <div class="ml-12">
-                            <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="p-6 border-t border-gray-200 dark:border-gray-700">
-                        <div class="flex items-center">
-                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path></svg>
-                            <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laravel-news.com/" class="underline text-gray-900 dark:text-white">Laravel News</a></div>
-                        </div>
-
-                        <div class="ml-12">
-                            <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                Laravel News is a community driven portal and newsletter aggregating all of the latest and most important news in the Laravel ecosystem, including new package releases and tutorials.
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
-                        <div class="flex items-center">
-                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            <div class="ml-4 text-lg leading-7 font-semibold text-gray-900 dark:text-white">Vibrant Ecosystem</div>
-                        </div>
-
-                        <div class="ml-12">
-                            <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                Laravel's robust library of first-party tools and libraries, such as <a href="https://forge.laravel.com" class="underline">Forge</a>, <a href="https://vapor.laravel.com" class="underline">Vapor</a>, <a href="https://nova.laravel.com" class="underline">Nova</a>, and <a href="https://envoyer.io" class="underline">Envoyer</a> help you take your projects to the next level. Pair them with powerful open source libraries like <a href="https://laravel.com/docs/billing" class="underline">Cashier</a>, <a href="https://laravel.com/docs/dusk" class="underline">Dusk</a>, <a href="https://laravel.com/docs/broadcasting" class="underline">Echo</a>, <a href="https://laravel.com/docs/horizon" class="underline">Horizon</a>, <a href="https://laravel.com/docs/sanctum" class="underline">Sanctum</a>, <a href="https://laravel.com/docs/telescope" class="underline">Telescope</a>, and more.
-                            </div>
+                        <div class="github my-2 text-gray-600 flex dark:text-blue-100">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 50 50" class="mr-1"><path d="M17.791 46.836A1.999 1.999 0 0019 45v-5.4c0-.197.016-.402.041-.61A.611.611 0 0119 39h-3.6c-1.5 0-2.8-.6-3.4-1.8-.7-1.3-1-3.5-2.8-4.7-.3-.2-.1-.5.5-.5.6.1 1.9.9 2.7 2 .9 1.1 1.8 2 3.4 2 2.487 0 3.82-.125 4.622-.555C21.356 34.056 22.649 33 24 33v-.025c-5.668-.182-9.289-2.066-10.975-4.975-3.665.042-6.856.405-8.677.707a21.537 21.537 0 01-.151-.987c1.797-.296 4.843-.647 8.345-.714a8.162 8.162 0 01-.291-.849c-3.511-.178-6.541-.039-8.187.097-.02-.332-.047-.663-.051-.999 1.649-.135 4.597-.27 8.018-.111a9.832 9.832 0 01-.13-1.543c0-1.7.6-3.5 1.7-5-.5-1.7-1.2-5.3.2-6.6 2.7 0 4.6 1.3 5.5 2.1C21 13.4 22.9 13 25 13s4 .4 5.6 1.1c.9-.8 2.8-2.1 5.5-2.1 1.5 1.4.7 5 .2 6.6 1.1 1.5 1.7 3.2 1.6 5 0 .484-.045.951-.11 1.409 3.499-.172 6.527-.034 8.204.102-.002.337-.033.666-.051.999-1.671-.138-4.775-.28-8.359-.089a8.272 8.272 0 01-.325.98c3.546.046 6.665.389 8.548.689-.043.332-.093.661-.151.987-1.912-.306-5.171-.664-8.879-.682-1.665 2.878-5.22 4.755-10.777 4.974V33c2.6 0 5 3.9 5 6.6V45c0 .823.498 1.53 1.209 1.836C41.37 43.804 48 35.164 48 25 48 12.318 37.683 2 25 2S2 12.318 2 25c0 10.164 6.63 18.804 15.791 21.836z"></path></svg>
+                            rayanetenorios
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="flex justify-center mt-4 sm:items-center sm:justify-between">
-                <div class="text-center text-sm text-gray-500 sm:text-left">
-                    <div class="flex items-center">
-                        <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor" class="-mt-px w-5 h-5 text-gray-400">
-                            <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                        </svg>
-
-                        <a href="https://laravel.bigcartel.com" class="ml-1 underline">
-                            Shop
-                        </a>
-
-                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="ml-4 -mt-px w-5 h-5 text-gray-400">
-                            <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                        </svg>
-
-                        <a href="https://github.com/sponsors/taylorotwell" class="ml-1 underline">
-                            Sponsor
-                        </a>
+            <div class="md:w-2/3 px-8">
+                <div class="mb-6">
+                    <h2 class="mt-6 text-4xl text-gray-700 font-bold capitalize dark:text-blue-200">Olá!</h2>
+                    <p class="mt-8 mb-4 dark:bg-gray-800 dark:text-blue-200 text-justify">
+                        Graduanda em análise e desenvolvimento de sistemas pela Universidade Estácio de Sá (2023). Atualmente atua como desenvolvedora full-stack, dando suporte, atualizando e desenvolvendo sistemas utilizados em prefeituras pelo Brasil. CTO da Agência Eita Nós, também atua na criação e elaboração de soluções que auxiliam empreendedores na sua jornada.
+                    </p>
+                </div>
+                <div class="mt-8">
+                    <div class="mt-2">
+                        <h2 class="mb-2 text-xl text-gray-700 font-bold dark:text-blue-200 capitalize">Frontend</h2>
+                        <ul class="flex flex-wrap gap-4 items-center">
+                            <li class="flex items-center">
+                                <svg viewBox="0 0 128 128" class="h-10 w-10"><defs><linearGradient id="a" x1="76.079" x2="523.48" y1="10.798" y2="365.95" gradientTransform="translate(1.11 14.613) scale(.24566)" gradientUnits="userSpaceOnUse"><stop stop-color="#9013fe" offset="0"></stop><stop stop-color="#6610f2" offset="1"></stop></linearGradient><linearGradient id="b" x1="193.51" x2="293.51" y1="109.74" y2="278.87" gradientTransform="translate(0 52)" gradientUnits="userSpaceOnUse"><stop stop-color="#fff" offset="0"></stop><stop stop-color="#f1e5fc" offset="1"></stop></linearGradient><filter id="c" x="161.9" y="135.46" width="197" height="249" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood><feColorMatrix in="SourceAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"></feColorMatrix><feOffset dy="4"></feOffset><feGaussianBlur stdDeviation="8"></feGaussianBlur><feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.15 0"></feColorMatrix><feBlend in2="BackgroundImageFix" result="effect1_dropShadow"></feBlend><feBlend in="SourceGraphic" in2="effect1_dropShadow" result="shape"></feBlend></filter></defs><path d="M14.985 27.712c-.237-6.815 5.072-13.099 12.249-13.099h73.54c7.177 0 12.486 6.284 12.249 13.099-.228 6.546.068 15.026 2.202 21.94 2.141 6.936 5.751 11.319 11.664 11.883v6.387c-5.913.564-9.523 4.947-11.664 11.883-2.134 6.914-2.43 15.394-2.202 21.94.237 6.815-5.072 13.098-12.249 13.098h-73.54c-7.177 0-12.486-6.284-12.249-13.098.228-6.546-.068-15.026-2.203-21.94-2.14-6.935-5.76-11.319-11.673-11.883v-6.387c5.913-.563 9.533-4.947 11.673-11.883 2.135-6.914 2.43-15.394 2.203-21.94z" fill="url(#a)"></path><path transform="translate(1.494 2.203) scale(.24566)" d="M267.1 364.46c47.297 0 75.798-23.158 75.798-61.355 0-28.873-20.336-49.776-50.532-53.085v-1.203c22.185-3.609 39.594-24.211 39.594-47.219 0-32.783-25.882-54.138-65.322-54.138h-88.74v217zm-54.692-189.48h45.911c24.958 0 39.131 11.128 39.131 31.279 0 21.505-16.484 33.535-46.372 33.535h-38.67zm0 161.96v-71.431h45.602c32.661 0 49.608 12.03 49.608 35.49 0 23.459-16.484 35.941-47.605 35.941z" fill="url(#b)" filter="url(#c)" stroke="#fff"></path></svg>
+                            </li> 
+                            <li class="flex items-center">
+                                <svg viewBox="0 0 50 50" class="mt-4 h-10 w-10"><path fill-rule="evenodd" clip-rule="evenodd" d="M25.517 0C18.712 0 14.46 3.382 12.758 10.146c2.552-3.382 5.529-4.65 8.931-3.805 1.941.482 3.329 1.882 4.864 3.432 2.502 2.524 5.398 5.445 11.722 5.445 6.804 0 11.057-3.382 12.758-10.145-2.551 3.382-5.528 4.65-8.93 3.804-1.942-.482-3.33-1.882-4.865-3.431C34.736 2.92 31.841 0 25.517 0zM12.758 15.218C5.954 15.218 1.701 18.6 0 25.364c2.552-3.382 5.529-4.65 8.93-3.805 1.942.482 3.33 1.882 4.865 3.432 2.502 2.524 5.397 5.445 11.722 5.445 6.804 0 11.057-3.381 12.758-10.145-2.552 3.382-5.529 4.65-8.931 3.805-1.941-.483-3.329-1.883-4.864-3.432-2.502-2.524-5.398-5.446-11.722-5.446z" fill="#38bdf8"></path></svg>
+                            </li>
+                            <li class="flex items-center">
+                                <svg viewBox="0 0 128 128" class="h-10 w-10"><path fill="#F0DB4F" d="M1.408 1.408h125.184v125.185H1.408z"></path><path fill="#323330" d="M116.347 96.736c-.917-5.711-4.641-10.508-15.672-14.981-3.832-1.761-8.104-3.022-9.377-5.926-.452-1.69-.512-2.642-.226-3.665.821-3.32 4.784-4.355 7.925-3.403 2.023.678 3.938 2.237 5.093 4.724 5.402-3.498 5.391-3.475 9.163-5.879-1.381-2.141-2.118-3.129-3.022-4.045-3.249-3.629-7.676-5.498-14.756-5.355l-3.688.477c-3.534.893-6.902 2.748-8.877 5.235-5.926 6.724-4.236 18.492 2.975 23.335 7.104 5.332 17.54 6.545 18.873 11.531 1.297 6.104-4.486 8.08-10.234 7.378-4.236-.881-6.592-3.034-9.139-6.949-4.688 2.713-4.688 2.713-9.508 5.485 1.143 2.499 2.344 3.63 4.26 5.795 9.068 9.198 31.76 8.746 35.83-5.176.165-.478 1.261-3.666.38-8.581zM69.462 58.943H57.753l-.048 30.272c0 6.438.333 12.34-.714 14.149-1.713 3.558-6.152 3.117-8.175 2.427-2.059-1.012-3.106-2.451-4.319-4.485-.333-.584-.583-1.036-.667-1.071l-9.52 5.83c1.583 3.249 3.915 6.069 6.902 7.901 4.462 2.678 10.459 3.499 16.731 2.059 4.082-1.189 7.604-3.652 9.448-7.401 2.666-4.915 2.094-10.864 2.07-17.444.06-10.735.001-21.468.001-32.237z"></path></svg>
+                            </li>
+                            <li class="flex items-center">
+                                <svg viewBox="0 0 128 128" class="h-10 w-10"><path d="M0 8.934l49.854.158 14.167 24.47 14.432-24.47L128 8.935l-63.834 110.14zm126.98.637l-24.36.02-38.476 66.053L25.691 9.592.942 9.572l63.211 107.89zm-25.149-.008l-22.745.168-15.053 24.647L49.216 9.73l-22.794-.168 37.731 64.476zm-75.834-.17l23.002.009m-23.002-.01l23.002.01" fill="none"></path><path d="M25.997 9.393l23.002.009L64.035 34.36 79.018 9.404 102 9.398 64.15 75.053z" fill="#35495e"></path><path d="M.91 9.569l25.067-.172 38.15 65.659L101.98 9.401l25.11.026-62.966 108.06z" fill="#41b883"></path></svg>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mt-4">
+                        <h2 class="mb-2 text-xl text-gray-700 font-bold dark:text-blue-200 capitalize">Backend</h2>
+                        <ul class="flex flex-wrap gap-4 items-center">
+                            <li class="flex items-center">
+                                <svg viewBox="0 0 128 128" class="h-10 w-10"><path fill-rule="evenodd" clip-rule="evenodd" fill="#FD4F31" d="M16.934 1.719c-1.127.088-2.234.074-3.325.373-2.387.655-4.508 1.702-6.379 3.316-1.1.948-2.06 1.97-2.875 3.174-1.258 1.859-2.115 3.857-2.545 6.106.172.301.353.617.545.938 1.219 2.038 2.439 4.062 3.661 6.098l3.212 5.341c.988 1.646 1.974 3.293 2.96 4.939l4.608 7.688 3.143 5.244c1.527 2.545 3.058 5.088 4.583 7.634l5.609 9.371c1.617 2.699 3.237 5.396 4.857 8.093l.216.314c.235.075.422.011.616-.035 2.134-.512 4.268-1.021 6.402-1.531 3.461-.827 6.922-1.651 10.383-2.479l5.421-1.297c3.499-.836 6.999-1.67 10.498-2.508 3.537-.846 7.073-1.696 10.611-2.543 1.788-.429 3.576-.856 5.365-1.283 3.461-.826 6.922-1.65 10.383-2.474l11.308-2.693.611-.165-.167-.331-3.086-4.362-3.048-4.315-3.26-4.604-3.116-4.413-3.088-4.361-3.188-4.507c-1.041-1.47-2.084-2.938-3.126-4.407l-1.647-2.326a4.275 4.275 0 01-.587-1.159c-.326-1.011.046-1.684.636-2.181.382-.323.822-.56 1.298-.7a20.898 20.898 0 012.01-.51c1.359-.257 2.727-.475 4.091-.702l4.624-.754c.975-.161 1.949-.33 2.924-.495 1.325-.224 2.65-.449 3.976-.67 1.287-.216 2.574-.43 3.861-.642l4.213-.689 2.924-.491c1.112-.186 2.223-.371 3.334-.553 1.386-.226 2.771-.454 4.157-.671.826-.129 1.652-.174 2.472.062a5.63 5.63 0 011.696.833l.721.503c.072-.166-.032-.256-.08-.351a16.543 16.543 0 00-4.26-5.422 16.399 16.399 0 00-5.636-3.09c-1.229-.389-2.492-.208-3.778-.305M55.689 127c-.062 0-.117-.45-.187-.569-1.5-2.56-3.016-5.308-4.498-7.877a1335.74 1335.74 0 01-5.557-9.74c-1.965-3.478-3.913-6.966-5.863-10.452a5709.989 5709.989 0 01-5.549-9.948c-1.115-2.005-2.223-4.014-3.337-6.02l-.296-.459-.542.107c-1.072.277-2.142.556-3.212.838-1.49.392-2.979.791-4.47 1.18-3.347.871-6.694 1.737-10.041 2.605-3.404.884-6.951 1.77-10.356 2.65-.207.053.219.071-.781.106v21.145c.412.656.373.347.399.563.079.626.207 1.257.317 1.877.412 2.31 1.339 4.425 2.679 6.351 1.965 2.826 4.582 4.846 7.788 6.082 1.145.44 2.34.75 3.562.9l1.241.328"></path><path fill-rule="evenodd" clip-rule="evenodd" fill="#FD4F31" d="M4.976 77.742c3.939-.937 7.879-1.873 11.818-2.808 1.73-.41 3.461-.815 5.191-1.227.865-.206 1.732-.402 2.59-.634.764-.206.858-.459.465-1.148-.568-.996-1.146-1.986-1.721-2.979l-5.064-8.72-5.062-8.721c-1.717-2.958-3.436-5.916-5.154-8.873l-4.412-7.59c-.636-1.094-1.408-2.191-2.047-3.284-.119-.199.42-.437-.58-.543v47.396c0-.032.453-.059.606-.096l3.37-.773zm121.248 33.878c-1.544.549-3.089 1.102-4.632 1.655l-10.545 3.781c-1.953.701-3.902 1.41-5.856 2.108-3.982 1.421-7.966 2.837-11.949 4.255-2.308.822-4.617 1.838-6.924 2.664-.632.227-1.255.917-1.881.917h26.49l.57-.327c.674-.029 1.337-.229 1.999-.35 2.719-.497 5.154-1.673 7.311-3.392 1.657-1.321 3.005-2.936 4.061-4.778 1.086-1.896 1.731-3.947 2.041-6.101.027-.186.085-.397-.071-.589-.22-.017-.414.086-.614.157zm-2.275-35.571c-1.168-1.598-2.339-3.193-3.505-4.792-1.609-2.207-3.215-4.416-4.822-6.624-.653-.896-1.315-1.785-1.952-2.691-.192-.273-.411-.346-.71-.265l-.171.049c-2.958.719-5.917 1.436-8.876 2.153l-5.302 1.287-10.372 2.519c-3.419.831-6.838 1.663-10.258 2.492l-10.662 2.582c-3.497.849-6.992 1.701-10.488 2.551l-10.142 2.462c-1.787.434-3.574.866-5.359 1.302-.263.064-.546.08-.826.292l.239.455a5999.968 5999.968 0 009.598 16.529c1.874 3.213 3.753 6.424 5.63 9.636 1.079 1.845 2.151 3.692 3.239 5.532a661.851 661.851 0 003.653 6.115c.369.607.788 1.187 1.21 1.759a3.64 3.64 0 001.046.957c.426.257.885.338 1.369.229.25-.057.495-.139.737-.223l.89-.33c3.237-1.107 6.473-2.214 9.711-3.317 2.526-.86 5.055-1.716 7.583-2.571 2.509-.851 5.02-1.698 7.53-2.545l7.474-2.524c2.548-.861 5.095-1.722 7.642-2.585 3.126-1.061 6.251-2.126 9.379-3.185 3.015-1.02 6.033-2.034 9.049-3.052.185-.062.389-.088.542-.291l.019-.439c.001-6.255-.001-12.511.006-18.766a1.38 1.38 0 00-.289-.873c-.948-1.269-1.877-2.551-2.812-3.828zm-.519-58.938c-.702-.889-1.596-1.171-2.692-.885-.477.125-.967.204-1.453.293-1.594.292-3.19.579-4.784.868-2.334.424-4.667.852-7.001 1.272-1.848.332-3.697.659-5.546.983l-7.418 1.298c-.311.054-.625.108-.925.204-.437.14-.563.414-.363.825.163.336.366.657.586.959 1.534 2.114 3.075 4.223 4.616 6.333 2.124 2.909 4.249 5.817 6.374 8.724 1.798 2.46 3.598 4.92 5.397 7.379 1.414 1.932 2.828 3.864 4.244 5.795l.279.338 12.271-3.033.029-.636c.001-8.511-.001-17.022.006-25.534 0-.376-.091-.678-.328-.976-1.032-1.303-2.045-2.621-3.066-3.933l-.226-.274zm3.301 41.241c-1.856.446-3.719.87-5.62 1.373.201.357 5.415 7.395 5.718 7.729l.19.105.021-.429.001-2.963c.001-1.719.005-3.438.001-5.157 0-.209.059-.434-.085-.646l-.226-.012z"></path></svg>
+                            </li>
+                            <li class="flex items-center">
+                                <PhpLogo style="height: 46px;"/>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-
-                <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
-                    Laravel v{{ laravelVersion }} (PHP v{{ phpVersion }})
+                <div class="opacity-100 mt-10">
+                    <ol class="relative border-l border-gray-200 dark:border-gray-700">
+                        <li class="mb-10 ml-6">
+                            <span class="flex absolute -left-3 justify-center items-center w-6 h-6 bg-rosaEscuro rounded-full">
+                                <ChapeuFormatura />
+                            </span>
+                            <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white">
+                                Desenvolvedora full-stack na Gove Digital
+                                <span class="bg-lilas text-rosaEscuro text-sm font-medium mr-2 px-2.5 py-0.5 rounded ml-3">Atualmente</span>
+                            </h3>
+                            <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">04/2022-atualmente (5m)</time>
+                            <p class="mb-4 text-base">
+                                Parte do time de desenvolvimento de novos produtos com objetivo na aproximação de prefeituras com os contribuintes do Brasil.
+                            </p>
+                        </li>
+                        <li class="mb-10 ml-6">
+                            <span class="flex absolute -left-3 justify-center items-center w-6 h-6 bg-rosaEscuro rounded-full">
+                                <ChapeuFormatura />
+                            </span>
+                            <h3 class="flex items-center mb-1 text-lg font-semibold text-lilas">
+                                Desenvolvedora full-stack jr na Agill Sistemas
+                            </h3>
+                            <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">09/2021-04/2022 (8m)</time>
+                            <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">
+                                Suporte, desenvolvimento e atualização dos sistemas desenvolvidos pela empresa para prefeituras. Renovação da experiência do usuário e interfaces dos sistemas. Skills: HTML, CSS, JAVASCRIPT, PHP, Laravel, Mysql, Docker, Linux, API's, Insomnia, GIT, bibliotecas de geração de arquivos PDF.
+                            </p>
+                        </li>
+                        <li class="mb-10 ml-6">
+                            <span class="flex absolute -left-3 justify-center items-center w-6 h-6 bg-rosaEscuro rounded-full">
+                                <ChapeuFormatura />
+                            </span>
+                            <h3 class="flex items-center mb-1 text-lg font-semibold text-lilas">
+                                Estagiária de desenvolvimento na Agill Sistemas
+                            </h3>
+                            <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">06/2021-09/2021 (3m)</time>
+                            <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">
+                                Suporte a sistemas PHP legados, Laravel e atendimento aos chamados de contribuintes.
+                            </p>
+                        </li>
+                        <li class="mb-10 ml-6">
+                            <span class="flex absolute -left-3 justify-center items-center w-6 h-6 bg-rosaEscuro rounded-full">
+                                <ChapeuFormatura />
+                            </span>
+                            <h3 class="flex items-center mb-1 text-lg font-semibold text-lilas">
+                                Análise e desenvolvimento de sistemas na Estácio
+                                 <span class="bg-lilas text-rosaEscuro text-sm font-medium mr-2 px-2.5 py-0.5 rounded ml-3">Atualmente</span>
+                            </h3>
+                            <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">02/2021 - 08/2023</time>
+                            <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">
+                                Graduação tecnológica com foco em desenvolvimento de sistemas.
+                            </p>
+                        </li>
+                        <li class="mb-10 ml-6">
+                            <span class="flex absolute -left-3 justify-center items-center w-6 h-6 bg-rosaEscuro rounded-full">
+                                <Casa />
+                            </span>
+                            <h3 class="flex items-center mb-1 text-lg font-semibold text-lilas">
+                                Nascida em Maceió, Alagoas
+                            </h3>
+                            <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">02 de maio de 1997</time>
+                            <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">
+                                Não me lembro de nenhum trabalho produtivo nessa época. :)
+                            </p>
+                        </li>
+                    </ol>
                 </div>
             </div>
-        </div>
-    </div>
+        </main>
+    </SiteLayout>
 </template>
 
-<style scoped>
-    .bg-gray-100 {
-        background-color: #f7fafc;
-        background-color: rgba(247, 250, 252, var(--tw-bg-opacity));
+<style>
+    html {
+        background-color: var(--roxo);
+        color: var(--lilas);
+    }
+    .infos svg {
+        fill: var(--roxo);
+        stroke: var(--lilas);
+    }
+    .github svg {
+        fill: var(--lilas);
+        stroke: var(--lilas);
+    }
+    .scrollbar::-webkit-scrollbar {
+        width: 10px;
+        height: 20px;
+    }
+    .scrollbar::-webkit-scrollbar-track {
+        border-radius: 100vh;
+        background: var(--rosaEscuro);
     }
 
-    .border-gray-200 {
-        border-color: #edf2f7;
-        border-color: rgba(237, 242, 247, var(--tw-border-opacity));
+    .scrollbar::-webkit-scrollbar-thumb {
+        background: var(--roxo);
+        border-radius: 100vh;
+        border: 2px solid var(--lilas);
     }
 
-    .text-gray-400 {
-        color: #cbd5e0;
-        color: rgba(203, 213, 224, var(--tw-text-opacity));
-    }
-
-    .text-gray-500 {
-        color: #a0aec0;
-        color: rgba(160, 174, 192, var(--tw-text-opacity));
-    }
-
-    .text-gray-600 {
-        color: #718096;
-        color: rgba(113, 128, 150, var(--tw-text-opacity));
-    }
-
-    .text-gray-700 {
-        color: #4a5568;
-        color: rgba(74, 85, 104, var(--tw-text-opacity));
-    }
-
-    .text-gray-900 {
-        color: #1a202c;
-        color: rgba(26, 32, 44, var(--tw-text-opacity));
-    }
-
-    @media (prefers-color-scheme: dark) {
-        .dark\:bg-gray-800 {
-            background-color: #2d3748;
-            background-color: rgba(45, 55, 72, var(--tw-bg-opacity));
-        }
-
-        .dark\:bg-gray-900 {
-            background-color: #1a202c;
-            background-color: rgba(26, 32, 44, var(--tw-bg-opacity));
-        }
-
-        .dark\:border-gray-700 {
-            border-color: #4a5568;
-            border-color: rgba(74, 85, 104, var(--tw-border-opacity));
-        }
-
-        .dark\:text-white {
-            color: #fff;
-            color: rgba(255, 255, 255, var(--tw-text-opacity));
-        }
-
-        .dark\:text-gray-400 {
-            color: #cbd5e0;
-            color: rgba(203, 213, 224, var(--tw-text-opacity));
-        }
+    .scrollbar::-webkit-scrollbar-thumb:hover {
+        background: var(--roxo);
     }
 </style>
+<script>
+    export default {
+        props: {
+            
+        }
+    }
+</script>
+

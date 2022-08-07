@@ -1,4 +1,4 @@
-const defaultTheme = require('tailwindcss/defaultTheme');
+// const defaultTheme = require('tailwindcss/defaultTheme');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -10,9 +10,19 @@ module.exports = {
     ],
 
     theme: {
+        colors: {
+            roxo: 'rgb(63, 23, 73)',
+            rosaEscuro: 'rgb(105, 25, 88)',
+            lilas: 'rgb(150, 139, 175)',
+            branco: 'rgb(255, 255, 255)',
+        },
         extend: {
             fontFamily: {
-                sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+                hitmobold: ["Hitmo-Bold", "sans-serif"],
+                hitmoblack: ["Hitmo-Black", "sans-serif"],
+                hitmobegular: ["Hitmo-Regular", "sans-serif"],
+                tommyregular: ["Tommy-Regular", "sans-serif"],
+                tommylight: ["Tommy-Light", "sans-serif"],
             },
         },
     },

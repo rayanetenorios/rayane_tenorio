@@ -1,3 +1,43 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+ 
+
+@font-face {
+    font-family: "Hitmo-Black";
+    src: url("../../public/src/fonts/Hitmo2.0-Black.ttf");
+}
+
+@font-face {
+    font-family: "Hitmo-Bold";
+    src: url("../../public/src/fonts/Hitmo2.0-Bold.ttf");
+}
+
+@font-face {
+    font-family: "Hitmo-Regular";
+    src: url("../../public/src/fonts/Hitmo2.0-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Hitmo-Light";
+    src: url("../../public/src/fonts/Hitmo2.0-Light.ttf");
+}
+
+@font-face {
+    font-family: "Tommy-Light";
+    src: url("../../public/src/fonts/MADE-Tommy-Soft-Light.otf");
+}
+
+@font-face {
+    font-family: "Tommy-Regular";
+    src: url("../../public/src/fonts/MADE-Tommy-Soft-Regular.otf");
+}
+
+@layer base {
+    :root {
+        --roxo: rgb(63, 23, 73);
+        --rosaEscuro: rgb(105, 25, 88);
+        --lilas: rgb(150, 139, 175);
+        --branco: rgb(250, 250, 250);
+    }
+  }
