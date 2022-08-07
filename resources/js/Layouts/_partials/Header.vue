@@ -12,10 +12,10 @@ import BreezeNavLink from '@/Components/NavLink.vue';
                 <BreezeNavLink :href="route('index')" :active="route().current('index')">
                     Home
                 </BreezeNavLink>
-                <BreezeNavLink :href="route('dashboard')" :active="route().current('dashboard')">
+                <BreezeNavLink :href="route('projects.index')" :active="route().current('projects.index')">
                     Projetos
                 </BreezeNavLink>
-                <BreezeNavLink :href="route('dashboard')" :active="route().current('dashboard')">
+                <BreezeNavLink :href="route('blog.index')" :active="route().current('blog.index')">
                     Blog
                 </BreezeNavLink>
             </div>

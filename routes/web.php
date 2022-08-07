@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\IndexController;
-use Illuminate\Foundation\Application;
+use App\Http\Controllers\ProjectsController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -19,6 +20,14 @@ use Inertia\Inertia;
 Route::get('/', [
     IndexController::class, 'index'
 ])->name('index');
+
+Route::get('/projects', [
+    ProjectsController::class, 'index'
+])->name('projects.index');
+
+Route::get('/blog', [
+    BlogController::class, 'index'
+])->name('blog.index');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
