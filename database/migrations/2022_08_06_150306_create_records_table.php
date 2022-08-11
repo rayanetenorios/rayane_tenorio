@@ -15,11 +15,17 @@ return new class extends Migration
     {
         Schema::create('records', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->string('name');
+            $table->uuid()->unique();
             $table->date('birthday')->nullable();
             $table->string('phone')->nullable();
             $table->timestamps();
             $table->softDeletes();
+  
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users');
         });
     }
 

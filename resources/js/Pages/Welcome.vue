@@ -157,24 +157,6 @@ import GithubLogo from '@/Components/Icons/GithubLogo.vue';
         fill: var(--lilas);
         stroke: var(--lilas);
     }
-    .scrollbar::-webkit-scrollbar {
-        width: 10px;
-        height: 20px;
-    }
-    .scrollbar::-webkit-scrollbar-track {
-        border-radius: 100vh;
-        background: var(--rosaEscuro);
-    }
-
-    .scrollbar::-webkit-scrollbar-thumb {
-        background: var(--roxo);
-        border-radius: 100vh;
-        border: 2px solid var(--lilas);
-    }
-
-    .scrollbar::-webkit-scrollbar-thumb:hover {
-        background: var(--roxo);
-    }
 </style>
 <script>
     export default {

@@ -10,4 +10,20 @@ class Record extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
+    protected $fillable = [
+        'uuid'
+    ];
+
+    protected $guarded = [];
+
+    public function articles() 
+    {
+        return $this->belongsToMany(
+            Article::class, 
+            'articles', 
+            'uuid',
+            'record_uuid'
+        );
+    }
 }

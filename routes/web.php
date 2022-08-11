@@ -29,6 +29,10 @@ Route::get('/blog', [
     BlogController::class, 'index'
 ])->name('blog.index');
 
+Route::get('/blog/article/{u}', [
+    BlogController::class, 'getArticle'
+])->name('blog.article');
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

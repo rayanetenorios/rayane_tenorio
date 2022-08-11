@@ -7,14 +7,14 @@ import BlocoRepositorio from '@/Components/BlocoRepositorio.vue';
 
 <template>
     <SiteLayout>
-        <Head title="Home" />
+        <Head title="Projetos" />
         <div class="h-full max-w-screen-lg md:flex mx-auto overflow-x-hidden flex-col max-w-3xl px-4 mx-auto sm:px-6 xl:max-w-5xl xl:px-0">
             <div class="pt-6 pb-8 space-y-2 md:space-y-5">
                 <h1 class="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
                     Projetos
                 </h1>
                 <p class="text-lg leading-7 text-gray-500 dark:text-gray-400">
-                    Alguns projetos que desenvolvi e estão hospedados no Github.
+                    Projetos e estudos que desenvolvi e estão disponíveis no Github.
                 </p>
             </div>
             <main class="relative mb-auto scrollbar overflow-y-auto overflow-x-hidden lg:pr-3">
@@ -46,24 +46,6 @@ import BlocoRepositorio from '@/Components/BlocoRepositorio.vue';
     .github svg {
         fill: var(--lilas);
         stroke: var(--lilas);
-    }
-    .scrollbar::-webkit-scrollbar {
-        width: 10px;
-        height: 20px;
-    }
-    .scrollbar::-webkit-scrollbar-track {
-        border-radius: 100vh;
-        background: var(--rosaEscuro);
-    }
-
-    .scrollbar::-webkit-scrollbar-thumb {
-        background: var(--roxo);
-        border-radius: 100vh;
-        border: 2px solid var(--lilas);
-    }
-
-    .scrollbar::-webkit-scrollbar-thumb:hover {
-        background: var(--roxo);
     }
 </style>
 <script>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Record;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -11,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Inertia\Inertia;
+use Ramsey\Uuid\Nonstandard\Uuid;
 
 class RegisteredUserController extends Controller
 {
@@ -44,6 +46,12 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+        ]);
+
+        Record::create([
+            'name' => $user->name,
+            'user_id' => $user->id,
+            'uuid' => Uuid::uuid4(),
         ]);
 
         event(new Registered($user));

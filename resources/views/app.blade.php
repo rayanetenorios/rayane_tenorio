@@ -10,11 +10,11 @@
         <!-- Google tag (gtag.js) -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-78ZBJE12E3"></script>
         <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
 
-        gtag('config', 'G-78ZBJE12E3');
+            gtag('config', 'G-78ZBJE12E3');
         </script>
         
         <title inertia>Rayane Tenório Dev</title>
